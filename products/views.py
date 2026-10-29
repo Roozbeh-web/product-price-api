@@ -5,6 +5,9 @@ from .serializers import ProductSerializer
 class ProductListView(generics.ListAPIView):
     queryset = Product.objects.all().order_by('created_at')
     serializer_class = ProductSerializer
+    filterset_fields = ['price']
+    search_fields = ['name']
+    ordering_fields = ['price', 'created_at']
 
 class ProductDetailView(generics.RetrieveAPIView):
     queryset = Product.objects.all()
